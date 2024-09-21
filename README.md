@@ -80,3 +80,4 @@ WildGuard/
 ├── real_time_detection.py # Analyse vidéo
 └── yolov8n.pt            # Modèle IA entraîné
 ```
+
