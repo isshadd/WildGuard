@@ -9,7 +9,7 @@
   <h1>Résultat de détection</h1>
   <p>{{ result }}</p>
   <!-- Affichage de l'image uploadée -->
-  <img src="{{ url_for('static', filename='uploads/' ~ image_url) }}" alt="Image analysée" style="max-width: 500px;">
+  <img src="{{ image_url }}" alt="Image analysée" style="max-width: 500px;">
   <br>
   <a href="{{ url_for('upload') }}">Analyser une autre image</a>
   <br>

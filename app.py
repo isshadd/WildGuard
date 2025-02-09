@@ -72,21 +72,27 @@ def upload():
         if file.filename == '':
             return redirect(request.url)
         if file:
-            # Sauvegarde de l'image uploadée
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-            file.save(file_path)
+            # Sauvegarde temporaire de l'image
+            temp_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+            file.save(temp_path)
+            
+            # Upload l'image vers Supabase et obtient l'URL publique
+            from backend.utils import upload_image
+            public_url = upload_image(temp_path)
+            
             # Détection sur l'image
-            result = detect_poachers(file_path)
+            result = detect_poachers(temp_path)
             
             # Si le résultat indique "Hunter detected", envoyer une alerte SMS
             if "Hunter detected" in result:
                 detection_type = "poacher"
                 location = {"lat": 45.5017, "lng": -73.5673}  # Coordonnées fictives; adaptez si besoin
-                # Génère une URL absolue de l'image pour pouvoir la partager (optionnel)
-                image_url = url_for('static', filename='uploads/' + file.filename, _external=True)
-                notify_all_rangers(detection_type, image_url, location)
+                notify_all_rangers(detection_type, public_url, location)
             
-            return render_template('result.html', result=result, image_url=file.filename)
+            # Supprime le fichier temporaire
+            os.remove(temp_path)
+            
+            return render_template('result.html', result=result, image_url=public_url)
     return render_template('upload.html')
 
 if __name__ == '__main__':

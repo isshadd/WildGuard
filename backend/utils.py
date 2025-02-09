@@ -4,7 +4,7 @@ import mimetypes
 from supabase import create_client, Client
 import pytz
 import uuid
-from WildGuard.twilio_notifications import notify_all_rangers
+from twilio_notifications import notify_all_rangers
 
 # Supabase configuration
 SUPABASE_URL = "https://vtnrhbkqjorezqhiuogf.supabase.co"
@@ -116,6 +116,19 @@ def send_alert(image_path, detection_label, location=None):
         # Upload image first
         image_url = upload_image(image_path)
         
+        # Copy image to test_images for local viewing
+        import shutil
+        backend_dir = os.path.dirname(os.path.dirname(__file__))
+        test_image_dir = os.path.join(backend_dir, "test_images")
+        if not os.path.exists(test_image_dir):
+            os.makedirs(test_image_dir)
+        original_filename = os.path.basename(image_path)
+        test_image_filename = generate_unique_filename(original_filename)
+        destination_path = os.path.join(test_image_dir, test_image_filename)
+        shutil.copy(image_path, destination_path)
+        test_image_url = f"http://localhost:8000/test_images/{test_image_filename}"
+        print(f"Test image saved at: {destination_path} with URL: {test_image_url}")
+        
         # Get current time in Montreal timezone
         montreal_now = datetime.now(MONTREAL_TZ)
         
@@ -140,7 +153,7 @@ def send_alert(image_path, detection_label, location=None):
         
         # Send SMS notifications via Twilio
         print("Sending SMS notifications to rangers...")
-        notify_all_rangers(detection_label, image_url, location)
+        notify_all_rangers(detection_label, f"{image_url} | {test_image_url}", location)
         
         return alert_id
         
