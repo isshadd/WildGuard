@@ -91,6 +91,17 @@ def upload():
             
             # Supprime le fichier temporaire
             os.remove(temp_path)
+
+            if "bird" or "cat" or "dog" or "horse" or "sheep" or "cow" or "elephant" or "bear" or "zebra" or "giraffe" in result:
+                parts = result.split(':')
+                if len(parts) >= 3:
+                    # Le troisième élément contient " elephant ! --"
+                    species = parts[2].strip(" !-")
+                    detection_type = species    
+
+
+                location = {"lat": 45.5017, "lng": -73.5673}  # Coordonnées fictives; adaptez si besoin
+                notify_all_rangers(detection_type, public_url, location)
             
             return render_template('result.html', result=result, image_url=public_url)
     return render_template('upload.html')

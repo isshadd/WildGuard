@@ -25,7 +25,7 @@ def detect_poachers(image_path):
     # Liste des espèces rares à surveiller
     
     # Liste des espèces rares à surveiller
-    rare_species = ["zebra", "rhino", "elephant"]  # modifiez cette liste selon vos besoins
+    rare_species = ['bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe']  # modifiez cette liste selon vos besoins
 
     # Parcourir toutes les détections du modèle
     for box in results[0].boxes:
