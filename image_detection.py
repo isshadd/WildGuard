@@ -63,6 +63,6 @@ def detect_poachers(image_path):
 # Bloc principal pour tester la fonction
 if __name__ == '__main__':
     # Remplacez 'chemin/vers/image.jpg' par le chemin réel de l'image à tester
-    test_image = "images/elephant.jpeg"  # Par exemple, une image téléchargée sur Google "chasseur photo"
+    test_image = "images/poacher.jpg"  # Par exemple, une image téléchargée sur Google "chasseur photo"
     result = detect_poachers(test_image)
     print(result)
