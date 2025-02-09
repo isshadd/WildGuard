@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>WildGuard - Détection sur image</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h1>Détection sur image</h1>
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*" required>
+    <button type="submit">Analyser</button>
+  </form>
+  <br>
+  <a href="{{ url_for('index') }}">Retour à l'accueil</a>
+</body>
+</html>

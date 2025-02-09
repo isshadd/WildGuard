@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>WildGuard - Accueil</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h1>WildGuard - Système d'alerte</h1>
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('video') }}">Détection en temps réel</a></li>
+      <li><a href="{{ url_for('upload') }}">Détection sur image</a></li>
+    </ul>
+  </nav>
+</body>
+</html>
