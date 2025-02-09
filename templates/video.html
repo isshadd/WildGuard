@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>WildGuard - Détection en temps réel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h1>Détection en temps réel</h1>
+  <div class="video-container">
+    <!-- L'image se met à jour automatiquement grâce au streaming MJPEG -->
+    <img src="{{ url_for('video_feed') }}" alt="Flux vidéo en temps réel">
+  </div>
+  <br>
+  <a href="{{ url_for('index') }}">Retour à l'accueil</a>
+</body>
+</html>

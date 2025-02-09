@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>WildGuard - Résultat de détection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h1>Résultat de détection</h1>
+  <p>{{ result }}</p>
+  <!-- Affichage de l'image uploadée -->
+  <img src="{{ url_for('static', filename='uploads/' ~ image_url) }}" alt="Image analysée" style="max-width: 500px;">
+  <br>
+  <a href="{{ url_for('upload') }}">Analyser une autre image</a>
+  <br>
+  <a href="{{ url_for('index') }}">Retour à l'accueil</a>
+</body>
+</html>
