@@ -65,7 +65,7 @@ def send_sms_alert(phone_number, detection_type, image_url=None, location=None):
         if alert_type == "Poacher":
             message += "\n\nPlease take immediate action!"
         else:
-            message += f"Wiki: \n\nhttps://fr.wikipedia.org/wiki/{alert_type}"
+            message += f"\n\nFiche technique: https://wikipedia.org/wiki/{alert_type}"
         
         # Send SMS using Twilio
         sms = client.messages.create(
