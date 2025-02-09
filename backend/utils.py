@@ -4,7 +4,7 @@ import mimetypes
 from supabase import create_client, Client
 import pytz
 import uuid
-from twilio_notifications import notify_all_rangers
+from WildGuard.twilio_notifications import notify_all_rangers
 
 # Supabase configuration
 SUPABASE_URL = "https://vtnrhbkqjorezqhiuogf.supabase.co"
