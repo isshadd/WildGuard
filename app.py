@@ -106,6 +106,6 @@ def upload():
             return render_template('result.html', result=result, image_url=public_url)
     return render_template('upload.html')
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
     initialize_twilio()  # Initialisation de Twilio pour envoyer les SMS
