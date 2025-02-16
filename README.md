@@ -59,6 +59,7 @@ python app.py
 
 ### **Structure du projet**
 
+```bash
 WildGuard/
 ├── backend/              # Cœur logique
 │   ├── detection.py      # Détection d'objets
@@ -78,3 +79,4 @@ WildGuard/
 ├── alert_notifications.py # Gestion des alertes
 ├── real_time_detection.py # Analyse vidéo
 └── yolov8n.pt            # Modèle IA entraîné
+```
