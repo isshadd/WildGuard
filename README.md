@@ -40,7 +40,7 @@
 
 ```bash
 # 1. Cloner le dépôt
-git clone https://github.com/votreprofil/WildGuard.git
+git clone https://github.com/isshadd/WildGuard.git
 cd WildGuard
 
 # 2. Configurer l'environnement
